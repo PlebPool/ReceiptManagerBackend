@@ -1,4 +1,4 @@
-﻿using Persistance.Entities;
+﻿using Domain.Receipts;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Persistance.Commands.Receipts;
@@ -33,7 +33,7 @@ namespace WebApi.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddReceipt(PostReceiptModel incomingReceipt)
+        public ActionResult PostReceipt(PostReceiptModel incomingReceipt)
         {
             Guid freshGuid = Guid.NewGuid();
             addReceiptCommandHandler.Handle(new AddReceiptCommand(freshGuid, incomingReceipt.Name, incomingReceipt.Price, incomingReceipt.Amount, incomingReceipt.Date));

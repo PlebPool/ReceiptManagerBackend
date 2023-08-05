@@ -1,4 +1,4 @@
-﻿using Persistance.Entities;
+﻿using Domain.Receipts;
 using Persistance.Commands;
 using System;
 using System.Collections.Generic;

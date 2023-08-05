@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-using Persistance.Entities;
+using Domain.Receipts;
 
 namespace Persistance;
 

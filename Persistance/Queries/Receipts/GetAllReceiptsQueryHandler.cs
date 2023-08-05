@@ -1,4 +1,4 @@
-﻿using Persistance.Entities;
+﻿using Domain.Receipts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ namespace Persistance.Queries.Receipts
 {
     public class GetAllReceiptsQueryHandler : IQueryHandler<IEnumerable<Receipt>>
     {
-        ReceiptsContext receiptsContext;
+        private readonly ReceiptsContext receiptsContext;
 
         public GetAllReceiptsQueryHandler(ReceiptsContext receiptsContext)
         {

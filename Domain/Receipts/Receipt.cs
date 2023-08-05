@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Persistance.Entities;
+namespace Domain.Receipts;
 
-partial class Receipt
+public partial class Receipt
 {
     public int Id { get; set; }
 
