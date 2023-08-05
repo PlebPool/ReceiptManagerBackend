@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Persistance.Queries
 {
-    public interface IQueryHandler<TQuery, TReturn> where TQuery : IQuery
+    public interface IQueryHandler<TQuery, TReturn> : IQueryHandlerMarker where TQuery : IQuery
     {
         TReturn Handle(TQuery query);
     }

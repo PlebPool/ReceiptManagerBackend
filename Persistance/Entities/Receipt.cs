@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Persistance.Entities;
 
-public partial class ReceiptEntity
+public partial class Receipt
 {
     public int Id { get; set; }
 

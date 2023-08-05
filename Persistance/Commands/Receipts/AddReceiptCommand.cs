@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace Persistance.Commands.Receipts
 {
-    public record AddReceiptCommand(Guid DomainId, int Id, string Name, double Price, int Amount, DateTime Date) : ICommand;
+    public record AddReceiptCommand(Guid DomainId, string Name, double Price, int Amount, DateTime Date) : ICommand;
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Persistance.Queries.Receipts
 {
-    public class GetReceiptQueryHandler : IQueryHandler<GetReceiptQuery, ReceiptEntity>
+    public class GetReceiptQueryHandler : IQueryHandler<GetReceiptQuery, Receipt>
     {
         private readonly ReceiptsContext _context;
 
@@ -17,11 +17,11 @@ namespace Persistance.Queries.Receipts
             _context = context;
         }
 
-        public ReceiptEntity Handle(GetReceiptQuery query) 
+        public Receipt Handle(GetReceiptQuery query) 
         {
             try
             {
-                ReceiptEntity target = _context.Receipts.Where(a => a.DomainId == query.DomainId).Single<ReceiptEntity>();
+                Receipt target = _context.Receipts.Where(a => a.DomainId == query.DomainId).Single<Receipt>();
                 return target;
             } 
             catch (Exception ex)

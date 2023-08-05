@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Persistance.Queries.Receipts
 {
-    public class GetAllReceiptsQueryHandler : IQueryHandler<IEnumerable<ReceiptEntity>>
+    public class GetAllReceiptsQueryHandler : IQueryHandler<IEnumerable<Receipt>>
     {
         ReceiptsContext receiptsContext;
 
@@ -16,7 +16,7 @@ namespace Persistance.Queries.Receipts
             this.receiptsContext = receiptsContext;
         }
 
-        public IEnumerable<ReceiptEntity> Handle()
+        public IEnumerable<Receipt> Handle()
         {
             return receiptsContext.Receipts.ToList();
         }

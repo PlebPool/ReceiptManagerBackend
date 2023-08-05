@@ -2,13 +2,15 @@ using Persistance;
 using Persistance.Queries;
 using Persistance.Queries.Receipts;
 using Persistance.Entities;
+using WebAPI.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddDbContext<ReceiptsContext>();
+builder.Services.AddCommandAndQueryHandlers(Persistance.AssemblyReference.Assembly());
 
-builder.Services.AddScoped<IQueryHandler<IEnumerable<ReceiptEntity>>, GetAllReceiptsQueryHandler>();
+//builder.Services.AddScoped<IQueryHandler<IEnumerable<ReceiptEntity>>, GetAllReceiptsQueryHandler>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

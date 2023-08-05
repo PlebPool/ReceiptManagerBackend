@@ -18,10 +18,9 @@ namespace Persistance.Commands.Receipts
 
         public void Handle(AddReceiptCommand command)
         {
-            _context.Add(new ReceiptEntity
+            _context.Add(new Receipt
             {
                 DomainId = command.DomainId,
-                Id = command.Id,
                 Name = command.Name,
                 Price = command.Price,
                 Amount = command.Amount,
