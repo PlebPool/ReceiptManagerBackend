@@ -1,7 +1,7 @@
 using Persistance;
 using Persistance.Queries;
 using Persistance.Queries.Receipts;
-using Persistance.Entities;
+using Domain.Receipts;
 using WebAPI.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
