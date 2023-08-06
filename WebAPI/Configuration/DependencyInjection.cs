@@ -9,15 +9,18 @@ namespace WebAPI.Configuration
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection AddCommandAndQueryHandlers(this IServiceCollection services, Assembly assembly)
+        public static IServiceCollection RegisterScopedServicesByAttribute(this IServiceCollection services, params Type[] assemblyReferenceTypes)
         {
-            services.RegisterAssemblyPublicNonGenericClasses(Assembly.GetAssembly(typeof(Persistance.AssemblyReference)))
-                .Where(c => c.GetInterfaces().AnyHasScopeServiceAttribute())
+            for (int i = 0; i < assemblyReferenceTypes.Length; i++)
+            {
+                services.RegisterAssemblyPublicNonGenericClasses(Assembly.GetAssembly(assemblyReferenceTypes[i]))
+                .Where(c => c.GetInterfaces().AnyTypeHasScopeServiceAttribute())
                 .AsPublicImplementedInterfaces();
+            }
             return services;
         }
 
-        private static bool AnyHasScopeServiceAttribute(this Type[] t)
+        private static bool AnyTypeHasScopeServiceAttribute(this Type[] t)
         {
             for (int i = 0; i < t.Length; i++)
             {
@@ -26,7 +29,6 @@ namespace WebAPI.Configuration
                     return true;
                 }
             }
-
             return false;
         }
     }

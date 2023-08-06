@@ -8,9 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddDbContext<ReceiptsContext>();
-builder.Services.AddCommandAndQueryHandlers(Persistance.AssemblyReference.Assembly());
-
-//builder.Services.AddScoped<IQueryHandler<IEnumerable<ReceiptEntity>>, GetAllReceiptsQueryHandler>();
+builder.Services.RegisterScopedServicesByAttribute(typeof(Persistance.AssemblyReference));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
