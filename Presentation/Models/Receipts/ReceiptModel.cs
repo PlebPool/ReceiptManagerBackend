@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Presentation.Models.Receipts
 {
-    public class PostReceiptModel
+    public class ReceiptModel
     {
         public string Name { get; set; } = null!;
 

@@ -22,9 +22,9 @@ namespace Persistance.Commands.Receipts
             {
                 DomainId = command.DomainId,
                 Name = command.Name,
-                Price = command.Price,
-                Amount = command.Amount,
+                TotalPrice = command.TotalPrice,
                 Date = command.Date,
+                Entries = command.Entries,
             });
             _context.SaveChanges();
         }

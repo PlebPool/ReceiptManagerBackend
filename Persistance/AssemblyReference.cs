@@ -9,9 +9,5 @@ namespace Persistance
 {
     public static class AssemblyReference
     {
-        public static Assembly Assembly()
-        {
-            return typeof(Assembly).Assembly;
-        }
     }
 }

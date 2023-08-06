@@ -27,17 +27,36 @@ namespace WebApi.Controllers
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public IEnumerable<Receipt> GetReceipts()
+        public IEnumerable<ReceiptModel> GetReceipts()
         {
-            return getAllReceiptQueryHandler.Handle();
+            return getAllReceiptQueryHandler.Handle().Select(receipt => ToModel(receipt));
         }
 
         [HttpPost]
         public ActionResult PostReceipt(PostReceiptModel incomingReceipt)
         {
             Guid freshGuid = Guid.NewGuid();
-            addReceiptCommandHandler.Handle(new AddReceiptCommand(freshGuid, incomingReceipt.Name, incomingReceipt.Price, incomingReceipt.Amount, incomingReceipt.Date));
+            addReceiptCommandHandler.Handle(
+                new AddReceiptCommand(
+                    freshGuid, 
+                    incomingReceipt.Name, 
+                    incomingReceipt.TotalPrice, 
+                    incomingReceipt.Date, 
+                    incomingReceipt.Entries
+                )
+            );
             return Ok();
         }
+
+        private static ReceiptModel ToModel(Receipt receipt)
+        {
+            return new()
+            {
+                Name = receipt.Name,
+                TotalPrice = receipt.TotalPrice,
+                Date = receipt.Date,
+                Entries = receipt.Entries
+            };
+        } 
     }
 }
